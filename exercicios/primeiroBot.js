@@ -15,9 +15,8 @@ bot.on("text", async (ctx, next) => {
   next();
 });
 
-bot.on("text", async (ctx, next) => {
+bot.on("text", async (ctx) => {
   await ctx.reply("Mid 2");
-  next();
 });
 
 //Polling manda mensagem para o API do telegram para verificar se tem uma nova mensagem
