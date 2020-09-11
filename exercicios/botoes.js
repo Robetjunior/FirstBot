@@ -18,7 +18,7 @@ const botoes = Extra.markup(
       Markup.callbackButton("Zerar", "reset"),
       Markup.callbackButton("Resultado", "result"),
     ],
-    { column: 3 }
+    { columns: 3 }
   ) // organiza os botoes em 3 colunas
 );
 
@@ -43,6 +43,7 @@ bot.action("reset", (ctx) => {
   ctx.reply(`A contagem atual esta em ${contagem}`, botoes);
 });
 
+// answerCbQuery aparece uma caixa de texto em cima da mensagem
 bot.action("result", (ctx) => {
   ctx.answerCbQuery(`A contagem atual esta em ${contagem}`);
 });
