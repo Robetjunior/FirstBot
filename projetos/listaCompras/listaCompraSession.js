@@ -17,6 +17,7 @@ const botoes = (lista) =>
 bot.use(session());
 
 bot.start(async (ctx) => {
+  console.log(ctx.update.message.from);
   const name = ctx.update.message.from.first_name;
   await ctx.reply(`Seja bem vindo, ${name}!`);
   await ctx.reply(`Escreva os itens que voce deseja adicionar...`);
