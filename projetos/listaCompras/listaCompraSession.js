@@ -4,7 +4,7 @@ const Telegraf = require("telegraf");
 const Extra = require("telegraf/extra");
 const Markup = require("telegraf/extra");
 const session = require("telegraf/session");
-const bot = new Telegraf("env.token");
+const bot = new Telegraf(env.token);
 
 const botoes = (lista) =>
   Extra.markup(
