@@ -20,10 +20,10 @@ const verificarUsuario = (ctx, next) => {
   //verificar se e o mesmo ID vindo de uma mensagem
   // o ID pode vir por uma callback ou pela mensagem
   const mesmoIDMsg =
-    ctx.update.message && ctx.update.message.from.id === env.userID;
+    ctx.update.message && ctx.update.message.from.id == env.userID;
   const mesmoIDCallback =
     ctx.update.callback_query &&
-    ctx.update.callback_query.from.id === env.userID;
+    ctx.update.callback_query.from.id == env.userID;
 
   if (mesmoIDMsg || mesmoIDCallback) {
     next();
@@ -37,7 +37,6 @@ const processando = ({ reply }, next) =>
   reply("processando...").then(() => next());
 
 bot.start(verificarUsuario, async (ctx) => {
-  console.log(ctx.update.message.from);
   const name = ctx.update.message.from.first_name;
   await ctx.reply(`Seja bem vindo, ${name}!`);
   await ctx.reply(`Escreva os itens que voce deseja adicionar...`);
@@ -46,11 +45,12 @@ bot.start(verificarUsuario, async (ctx) => {
 
 bot.on("text", verificarUsuario, processando, (ctx) => {
   let msg = ctx.update.message.text;
+  console.log(msg);
   ctx.session.lista.push(msg);
   ctx.reply(`${msg} adicionado`, botoes(ctx.session.lista));
 });
 
-bot.action(/delete (.+)/, verificarUsuario, processando, (ctx) => {
+bot.action(/delete (.+)/, verificarUsuario, (ctx) => {
   ctx.session.lista = ctx.session.lista.filter((item) => item !== ctx.match[1]);
   ctx.reply(`${ctx.match[1]} deletado com sucesso!`, botoes(ctx.session.lista));
 });
