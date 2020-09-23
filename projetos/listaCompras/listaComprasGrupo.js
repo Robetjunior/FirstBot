@@ -20,4 +20,21 @@ bot.start(async (ctx) => {
   await ctx.reply(`Escreva os itens que voce deseja adicionar!...`);
 });
 
-bot.use((ctx, next) => {});
+bot.use((ctx, next) => {
+  const chatId = ctx.update.message.chat.id;
+  if (!dados.hasOwnProperty(chatId)) dados[chatId] = [];
+  ctx.itens = dados[chatId];
+  next();
+});
+
+bot.on("text", (ctx) => {
+  let texto = ctx.update.message.text;
+  if (texto.startsWith("/")) texto = texto.substring(1);
+  ctx.itens.push(texto);
+  ctx.reply(`${texto} adicionado!`, gerarBotoes(ctx.itens));
+});
+
+bot.action(/delete (.+)/, (ctx) => {
+  const indice = ctx.itens.indexOf(ctx.match[1]);
+  if (indice >= 0) ctx.itens.splice(indice, 1);
+});
