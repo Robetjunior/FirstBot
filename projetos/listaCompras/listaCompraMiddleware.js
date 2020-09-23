@@ -40,12 +40,12 @@ bot.start(verificarUsuario, async (ctx) => {
   const name = ctx.update.message.from.first_name;
   await ctx.reply(`Seja bem vindo, ${name}!`);
   await ctx.reply(`Escreva os itens que voce deseja adicionar...`);
+
   ctx.session.lista = [];
 });
 
 bot.on("text", verificarUsuario, processando, (ctx) => {
   let msg = ctx.update.message.text;
-  console.log(msg);
   ctx.session.lista.push(msg);
   ctx.reply(`${msg} adicionado`, botoes(ctx.session.lista));
 });
