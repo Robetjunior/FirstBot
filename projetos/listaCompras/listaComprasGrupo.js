@@ -21,7 +21,7 @@ bot.start(async (ctx) => {
 });
 
 bot.use((ctx, next) => {
-  const chatId = ctx.update.message.chat.id;
+  const chatId = ctx.chat.id;
   if (!dados.hasOwnProperty(chatId)) dados[chatId] = [];
   ctx.itens = dados[chatId];
   next();
