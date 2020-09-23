@@ -37,4 +37,7 @@ bot.on("text", (ctx) => {
 bot.action(/delete (.+)/, (ctx) => {
   const indice = ctx.itens.indexOf(ctx.match[1]);
   if (indice >= 0) ctx.itens.splice(indice, 1);
+  ctx.reply(`${ctx.match[1]} deletado!`, gerarBotoes(ctx.itens));
 });
+
+bot.startPolling();
