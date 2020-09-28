@@ -69,4 +69,11 @@ bot.action("n", (ctx) => {
   ctx.reply("Ok, nao precisa ser grosso :(", tecladoOpcoes);
 });
 
+bot.action("s", async (ctx) => {
+  await ctx.reply(
+    `Que legal, tente me enviar sua localizacao, ou escreva uma mensagem qualquer...`,
+    localizacao
+  );
+});
+
 bot.startPolling();
