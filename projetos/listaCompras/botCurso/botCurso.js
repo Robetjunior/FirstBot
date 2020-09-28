@@ -14,6 +14,7 @@ const tecladoOpcoes = Markup.keyboard([
 
 const botoes = Extra.markup(
   Markup.inlineKeyboard(
+    // O botao sera escrito 'Sim' mas o evento vai ser 's'
     [Markup.callbackButton("Sim", "s"), Markup.callbackButton("Nao", "n")],
     { columns: 2 }
   )
@@ -48,6 +49,13 @@ bot.hears("O que verei no curso?", async (ctx) => {
     "3. E voce vera como eu fui feito, isso mesmo, voce poderia fazer uma copia de mim"
   );
   await ctx.replyWithMarkdown("\n\n_Algo mais?_", tecladoOpcoes);
+});
+
+bot.hears("Posso mesmo automatizar tarefas?", async (ctx) => {
+  await ctx.replyWithMarkdown(
+    "Claro que sim, o bot servira... \nQuer uma palinha?",
+    botoes
+  );
 });
 
 bot.startPolling();
