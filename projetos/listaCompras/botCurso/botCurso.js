@@ -65,4 +65,8 @@ bot.hears("Como comprar o curso?", (ctx) => {
   );
 });
 
+bot.action("n", (ctx) => {
+  ctx.reply("Ok, nao precisa ser grosso :(", tecladoOpcoes);
+});
+
 bot.startPolling();
