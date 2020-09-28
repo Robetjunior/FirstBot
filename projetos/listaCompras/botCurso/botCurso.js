@@ -5,7 +5,7 @@ const Markup = require("telegraf/markup");
 const bot = new Telegraf(env.token);
 
 const tecladoOpcoes = Markup.keyboard([
-  ["O que sao bots?", "O que verei no curso"],
+  ["O que sao bots?", "O que verei no curso?"],
   ["Posso mesmo automatizar tarefas?"],
   ["Como comprar o curso?"],
 ])
@@ -39,4 +39,15 @@ bot.hears("O que sao bots?", (ctx) => {
     tecladoOpcoes
   );
 });
+
+bot.hears("O que verei no curso?", async (ctx) => {
+  await ctx.replyWithMarkdown("No *curso* ... tb vamos criar *3 projetos*:");
+  await ctx.reply("1. Um bot que vai gerenciar a sua lista de compras");
+  await ctx.reply("2. Um bot que vai ter permitir seus eventos");
+  await ctx.reply(
+    "3. E voce vera como eu fui feito, isso mesmo, voce poderia fazer uma copia de mim"
+  );
+  await ctx.replyWithMarkdown("\n\n_Algo mais?_", tecladoOpcoes);
+});
+
 bot.startPolling();
