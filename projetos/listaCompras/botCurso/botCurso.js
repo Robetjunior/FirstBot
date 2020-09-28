@@ -76,4 +76,11 @@ bot.action("s", async (ctx) => {
   );
 });
 
+bot.hears(/mensagem qualquer/i, async (ctx) => {
+  await ctx.replyWithMarkdown(
+    `Essa piada e velha, tente outra...`,
+    tecladoOpcoes
+  );
+});
+
 bot.startPolling();
