@@ -33,4 +33,10 @@ bot.start(async (ctx) => {
   await ctx.replyWithMarkdown("_Posso te ajudar em algo?_", tecladoOpcoes);
 });
 
+bot.hears("O que sao bots?", (ctx) => {
+  ctx.replyWithMarkdown(
+    "Bots sao bla, bla bla... \n _Algo mais?_",
+    tecladoOpcoes
+  );
+});
 bot.startPolling();
