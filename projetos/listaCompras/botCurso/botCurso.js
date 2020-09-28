@@ -58,4 +58,11 @@ bot.hears("Posso mesmo automatizar tarefas?", async (ctx) => {
   );
 });
 
+bot.hears("Como comprar o curso?", (ctx) => {
+  ctx.replyWithMarkdown(
+    "Que bom... [link](https://www.cod3r.com.br/)",
+    tecladoOpcoes
+  );
+});
+
 bot.startPolling();
