@@ -29,4 +29,6 @@ const localizacao = Markup.keyboard([
 bot.start(async (ctx) => {
   const name = ctx.update.message.from.first_name;
   await ctx.replyWithMarkdown(`*Ola, ${nome}!* \n Eu sou o ChatBot do curso!`);
+  await ctx.replyWithPhoto("http://files.cod3r.com.br/curso-bot/bot.png");
+  await ctx.replyWithMarkdown("_Posso te ajudar em algo?_");
 });
