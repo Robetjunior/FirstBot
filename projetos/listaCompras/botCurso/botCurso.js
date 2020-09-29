@@ -97,7 +97,7 @@ bot.on("location", async (ctx) => {
     const { latitude: lat, longitude: lon } = ctx.message.location;
     // console.log(lat, lon);
     const res = await Axios.get(
-      `${url}?lat=${lat}&lon=${lon}&APPID=1b63392aba0711e59c42f63db2f24fe&units=metric`
+      `${url}?lat=${lat}&lon=${lon}&APPID=a9fc8dedc4c6ca17738ecc547829577a&units=metric`
     );
     await ctx.reply(`Humm.. Voce esta em ${res.data.name}`);
     await ctx.reply(
