@@ -90,4 +90,12 @@ bot.on("text", async (ctx) => {
   );
 });
 
+bot.on("location", async (ctx) => {
+  try {
+    const url = "http://api.openweathermap.org/data/2.5/weather";
+    const { latitude: lat, longitude: lon } = ctx.message.location;
+    console.log(lat, lon);
+  } catch (err) {}
+});
+
 bot.startPolling();
