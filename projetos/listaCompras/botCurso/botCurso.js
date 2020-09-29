@@ -80,4 +80,14 @@ bot.hears(/mensagem qualquer/i, (ctx) => {
   ctx.replyWithMarkdown(`Essa piada e velha, tente outra...`, tecladoOpcoes);
 });
 
+bot.on("text", async (ctx) => {
+  let msg = ctx.message.text;
+  msg = msg.split("").reverse().join("");
+  await ctx.reply(`A sua mensagem , ao contrario e: ${msg}`);
+  await ctx.reply(
+    `Isso mostra que eu consigo ler o que voce escreve e processar sua mensagem`,
+    tecladoOpcoes
+  );
+});
+
 bot.startPolling();
