@@ -2,6 +2,7 @@ const env = require("../../../.env");
 const Telegraf = require("telegraf");
 const Extra = require("telegraf/extra");
 const Markup = require("telegraf/markup");
+const { default: Axios } = require("axios");
 const bot = new Telegraf(env.token);
 
 const tecladoOpcoes = Markup.keyboard([
@@ -94,8 +95,21 @@ bot.on("location", async (ctx) => {
   try {
     const url = "http://api.openweathermap.org/data/2.5/weather";
     const { latitude: lat, longitude: lon } = ctx.message.location;
-    console.log(lat, lon);
-  } catch (err) {}
+    // console.log(lat, lon);
+    const res = await Axios.get(
+      `${url}?lat=${lat}&lon=${lon}&APPID=1b63392aba0711e59c42f63db2f24fe&units=metric`
+    );
+    await ctx.reply(`Humm.. Voce esta em ${res.data.name}`);
+    await ctx.reply(
+      `A temperatura ai esta em ${res.data.main.temp}C`,
+      tecladoOpcoes
+    );
+  } catch (err) {
+    ctx.reply(
+      `Estou tendo problemas para pegar a tua localizacao. Voce esta no planeta terra?`,
+      tecladoOpcoes
+    );
+  }
 });
 
 bot.startPolling();
